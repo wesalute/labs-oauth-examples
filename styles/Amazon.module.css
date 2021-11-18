@@ -1,0 +1,34 @@
+.main {
+  background-image: url(/Amazon.png);
+  max-width: 100%;
+  margin: 0;
+  background-size: cover;
+  height: 100vh;
+}
+.connect {
+  background-color: #232f3e;
+  position: fixed;
+  top: 57px;
+  right: 0;
+  width: 390px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+}
+.headerText.headerText {
+  color: white;
+  font-size: 13px;
+  text-decoration: none;
+  background-image: url(/wesalute.png);
+  padding-left: 60px;
+  min-height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.connected .headerText {
+  color: lime;
+  display: flex;
+  align-items: center;
+}

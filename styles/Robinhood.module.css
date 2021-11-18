@@ -1,0 +1,36 @@
+.background {
+  height: 100vh;
+  background-size: cover;
+}
+.home {
+  background-image: url('/robinhood-home.png');
+}
+.logged {
+  background-image: url('/robinhood-logged.png');
+}
+.register {
+  background-image: url('/robinhood-register.png');
+}
+.registerLink {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 169px;
+  color: transparent;
+  height: 63px;
+}
+.login.login {
+  background-image: url(/wesalute.png);
+  position: absolute;
+  top: 573px;
+  background-size: 154px;
+  background-repeat: no-repeat;
+  left: 130px;
+  font-size: 13px;
+  color: #00c806;
+  text-decoration: none;
+  width: 390px;
+  height: 91px;
+  padding-left: 174px;
+  padding-top: 32px;
+}

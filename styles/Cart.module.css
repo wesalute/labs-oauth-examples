@@ -1,0 +1,55 @@
+.cartItem {
+  display: flex;
+  height: 150px;
+  margin: 10px;
+  background-color: #ededed;
+  padding: 2px;
+  align-items: center;
+  justify-content: space-around;
+}
+.cartItem img {
+  max-width: 100px;
+}
+.main {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 60px;
+}
+.productQuantity input {
+  max-width: 40px;
+}
+.productName {
+  width: 200px;
+}
+.total {
+  margin-bottom: 1em;
+}
+.total,
+.subtotal {
+  text-align: right;
+  font-weight: bold;
+}
+.discount {
+  text-align: right;
+  background-image: url(/wesalute.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  margin: 30px 0;
+  background-position: 380px 0;
+  height: 30px;
+}
+.original {
+  font-style: italic;
+}
+.discountAmount {
+  text-align: right;
+}
+.discountCallout {
+  font-style: italic;
+  font-size: 10px;
+  margin-bottom: 15px;
+}
+.discountedPrice {
+  color: green;
+  font-weight: bold;
+}
