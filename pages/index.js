@@ -19,6 +19,7 @@ export default function Home() {
           <li><Link href="http://starbucks.localhost:4000/starbucks">Starbucks</Link></li>
           <li><Link href="http://cart.localhost:4000/cart">Generic Shopping Cart</Link></li>
           <li><Link href="http://robinhood.localhost:4000/robinhood">User Registration</Link></li>
+          <li><Link href="http://wesalute.localhost:4000/ourside">Ourside</Link></li>
           <li><Link href="/upsell">Upsell</Link></li>
         </ul>
       </main>

@@ -1,0 +1,16 @@
+.main {
+  background-image: url(/wesalute-screen.png);
+  max-width: 100%;
+  margin: 0;
+  background-size: cover;
+  height: 100vh;
+}
+.headerText {
+  position: absolute;
+  left: 151px;
+  width: 360px;
+  top: 130px;
+  height: 240px;
+  text-indent: -99999px;
+  overflow: hidden;
+}
