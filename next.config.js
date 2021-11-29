@@ -23,5 +23,15 @@ module.exports = {
   assetPrefix: getBasePath() ,
   publicRuntimeConfig: {
     basePath: getBasePath() ,
-  }
+  },
+  // Path rewrites config
+  async rewrites() {
+    return [
+      // Standard healthcheck endpoint (/healthz)
+      {
+        source: '/healthz',
+        destination: '/api/healthz',
+      },
+    ]
+  },
 }
