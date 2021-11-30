@@ -4,7 +4,6 @@ import router from 'next/router';
 import { useEffect, useState } from 'react';
 
 function Amazon({user_info}) {
-  console.log(router);
   const basePath = router?.router?.basePath;
   const [member_id, setMemberId] = useState('');
   const [userLoaded, setUserLoaded] = useState(false);

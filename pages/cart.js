@@ -14,7 +14,6 @@ function Cart({user_info}) {
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
       setMemberId(userinfo.member_id);
-      console.log(userinfo);
       if (userinfo.member_id) {
         let newPrice = Number(price * .9).toFixed(1).toLocaleString();
         setDiscountedPrice(newPrice);
