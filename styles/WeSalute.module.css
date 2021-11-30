@@ -1,11 +1,11 @@
 .main {
-  background-image: url(/wesalute-screen.png);
+  background-image: url(../public/wesalute-screen.png);
   max-width: 100%;
   margin: 0;
   background-size: cover;
   height: 100vh;
 }
-.headerText {
+.unredeemedText {
   position: absolute;
   left: 151px;
   width: 360px;
@@ -13,4 +13,24 @@
   height: 240px;
   text-indent: -99999px;
   overflow: hidden;
+}
+.redeemedText {
+  position: absolute;
+  left: 151px;
+  width: 354px;
+  top: 130px;
+  height: 240px;
+  overflow: hidden;
+  background-color: rgba(0,0,0,.6);
+  text-align: center;
+  padding: 39px 0;
+  color: #ab0000;
+  font-size: 30px;
+  text-shadow: 0px 0px 13px white;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.redeemedText span {
+  background-color: white;
+  padding: .2em;
 }

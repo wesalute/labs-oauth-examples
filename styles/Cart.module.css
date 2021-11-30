@@ -31,7 +31,7 @@
 }
 .discount {
   text-align: right;
-  background-image: url(/wesalute.png);
+  background-image: url(../public/wesalute.png);
   background-size: 40px;
   background-repeat: no-repeat;
   margin: 30px 0;

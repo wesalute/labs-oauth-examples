@@ -1,15 +1,18 @@
 import Head from 'next/head';
 import styles from 'css/Robinhood.module.css';
+import router from 'next/router';
+import { publicRuntimeConfig } from 'next.config';
 import { useState, useEffect } from 'react';
 
 export default function Robinhood() {
+  const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
   const [userLoaded, setUserLoaded] = useState(false);
   const [homeClass, setHomeClass] = useState();
 
   useEffect(() => {
     (async () => {
-      const userinfo_raw = await fetch('/api/oauth/userinfo');
+      const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=robinhood`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
       setMemberId(userinfo.member_id);
@@ -30,7 +33,7 @@ export default function Robinhood() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${homeClass} ${styles.background}`}>
-        <a className={styles.registerLink} href="/robinhood/register">Register</a>
+        <a className={styles.registerLink} href={`${basePath}/robinhood/register`}>Register</a>
       </main>
       
     </div>

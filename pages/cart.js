@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import styles from 'css/Cart.module.css'
+import { publicRuntimeConfig } from 'next.config';
+import router from 'next/router';
 import { useEffect, useState } from 'react';
 
 function Cart({user_info}) {
+  const basePath = publicRuntimeConfig.basePath || router?.router?.basePath;
   const [member_id, setMemberId] = useState('');
   const [price, setPrice] = useState(262.94);
   const [discountedPrice, setDiscountedPrice] = useState(price);
@@ -10,7 +13,7 @@ function Cart({user_info}) {
   
   useEffect(() => {
     (async () => {
-      const userinfo_raw = await fetch('/api/oauth/userinfo');
+      const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=cart`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
       setMemberId(userinfo.member_id);
@@ -32,7 +35,7 @@ function Cart({user_info}) {
       <h1>Checkout your Blueline Cart</h1>
 
       <div className={styles.cartItem}>
-        <img src="/10.png"/>
+        <img src={`${basePath}/10.png`}/>
         <div className={styles.productName}>10 pound Widget</div>
         <div className={styles.productQuantity}><input defaultValue="5"/></div>
         <div className={styles.price}>$39.99</div>
@@ -40,7 +43,7 @@ function Cart({user_info}) {
       </div>
 
       <div className={styles.cartItem}>
-        <img src="/20.png"/>
+        <img src={`${basePath}/20.png`}/>
         <div className={styles.productName}>20 pound Widget</div>
         <div className={styles.productQuantity}><input defaultValue="1"/></div>
         <div className={styles.price}>$59.99</div>
@@ -48,14 +51,14 @@ function Cart({user_info}) {
       </div>
 
       <div className={styles.cartItem}>
-        <img src="/blue.png"/>
+        <img src={`${basePath}/blue.png`}/>
         <div className={styles.productName}>Blue Widget</div>
         <div className={styles.productQuantity}><input defaultValue="1"/></div>
         <div className={styles.price}>$3.00</div>
         <div className={styles.trash}>🗑</div>
       </div>
       <div className={styles.subtotal}>Subtotal: ${price}</div>
-      <div className={styles.discount}>{member_id ? <div>Connected to WeSalute</div> : <Connect userLoaded={userLoaded}/>}</div>
+      <div className={styles.discount}>{member_id ? <div>Connected to WeSalute</div> : <Connect userLoaded={userLoaded} basePath={basePath}/>}</div>
       {member_id ? <Discounted price={price} discountedPrice={discountedPrice}/> : <div className={styles.total}>Total: ${price}</div>}
       
     </main>
@@ -63,8 +66,8 @@ function Cart({user_info}) {
     )
   }
 
-  function Connect({userLoaded}) {
-    return userLoaded ? <a className={styles.headerText} href="/api/oauth/redirect?client_id=cart">Connect WeSalute</a> : null;
+  function Connect({userLoaded, basePath}) {
+    return userLoaded ? <a className={styles.headerText} href={`${basePath}/api/oauth/redirect?client_id=cart`}>Connect WeSalute</a> : null;
   }
 
   function Discounted({price, discountedPrice}) {

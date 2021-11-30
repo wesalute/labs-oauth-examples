@@ -3,13 +3,13 @@
   background-size: cover;
 }
 .home {
-  background-image: url('/robinhood-home.png');
+  background-image: url(../public/robinhood-home.png);
 }
 .logged {
-  background-image: url('/robinhood-logged.png');
+  background-image: url(../public/robinhood-logged.png);
 }
 .register {
-  background-image: url('/robinhood-register.png');
+  background-image: url(../public/robinhood-register.png);
 }
 .registerLink {
   position: absolute;
@@ -20,7 +20,7 @@
   height: 63px;
 }
 .login.login {
-  background-image: url(/wesalute.png);
+  background-image: url(../public/wesalute.png);
   position: absolute;
   top: 573px;
   background-size: 154px;

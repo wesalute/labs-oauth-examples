@@ -1,14 +1,17 @@
-import Head from 'next/head'
-import styles from 'css/WeSalute.module.css'
+import Head from 'next/head';
+import styles from 'css/WeSalute.module.css';
+import router from 'next/router';
+import { publicRuntimeConfig } from 'next.config';
 import { useEffect, useState } from 'react';
 
 function Ourside({user_info}) {
+  const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
   const [userLoaded, setUserLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const userinfo_raw = await fetch('/api/oauth/userinfo');
+      const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=ourside`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
       setMemberId(userinfo.member_id);
@@ -26,10 +29,10 @@ function Ourside({user_info}) {
         <div className={styles.connect}>
           {member_id ?
           <div className={styles.connected}>
-            <div className={styles.headerText}>Thank you for your service</div>
+            <div className={styles.redeemedText}><span>Offer Redeemed</span></div>
           </div>
           :
-          <Connect userLoaded={userLoaded}/>
+          <Connect userLoaded={userLoaded} basePath={basePath}/>
           }
         </div>
       </main>
@@ -37,8 +40,8 @@ function Ourside({user_info}) {
   )
 }
 
-function Connect({userLoaded}) {
-  return userLoaded ? <a className={styles.headerText} href="/api/oauth/redirect?client_id=ourside">Military Discount</a> : null;
+function Connect({userLoaded, basePath}) {
+  return userLoaded ? <a className={styles.unredeemedText} href={`${basePath}/api/oauth/redirect?client_id=ourside`}>Military Discount</a> : null;
 }
 
 export default Ourside;

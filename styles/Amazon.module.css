@@ -8,8 +8,8 @@
 .connect {
   background-color: #232f3e;
   position: fixed;
-  top: 57px;
-  right: 0;
+  top: 14vh;
+  right: 1vw;
   width: 390px;
   height: 38px;
   display: flex;

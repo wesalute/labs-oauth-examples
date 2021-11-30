@@ -1,7 +1,11 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import router from 'next/router';
+import { publicRuntimeConfig } from 'next.config';
 import styles from 'css/Robinhood.module.css'
 
 export default function Robinhood() {
+  const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -10,7 +14,7 @@ export default function Robinhood() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.register} ${styles.background}`}>
-        <a className={styles.login} href="/api/oauth/redirect?client_id=robinhood">Login With WeSalute</a>
+        <a className={styles.login} href={`${basePath}/api/oauth/redirect?client_id=robinhood`}>Login With WeSalute</a>
       </main>
       
     </div>
