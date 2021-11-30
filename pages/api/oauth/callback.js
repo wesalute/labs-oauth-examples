@@ -1,9 +1,11 @@
 import { getToken } from 'lib/oauth';
 import { setCookies } from 'cookies-next';
+import { router } from 'next/router';
 import jwt_decode from "jwt-decode";
 
 export default async function handler(req, res) {
   const token = await getToken(req.headers.host, req.query.code, req.query.client_id);
+  const basePath = router.basePath;
   
   // Here is where you would typically store the access token in a database.
   // We'll store them as cookies for this demo application.
@@ -13,5 +15,6 @@ export default async function handler(req, res) {
   setCookies('access_token', token.token.access_token, cookie_options);
   setCookies('refresh_token', token.token.refresh_token, cookie_options);
   
-  return res.redirect(302, `/${req.query.client_id}`);
+  const destination = basePath ? `${basePath}/${req.query.client_id}` : req.query.client_id;
+  return res.redirect(302, `/${destination}`);
 }

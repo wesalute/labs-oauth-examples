@@ -1,5 +1,5 @@
 .main {
-  background-image: url(/Amazon.png);
+  background-image: url(../public/Amazon.png);
   max-width: 100%;
   margin: 0;
   background-size: cover;
@@ -21,7 +21,7 @@
   color: white;
   font-size: 13px;
   text-decoration: none;
-  background-image: url(/wesalute.png);
+  background-image: url(../public/wesalute.png);
   padding-left: 60px;
   min-height: 30px;
   background-size: contain;
