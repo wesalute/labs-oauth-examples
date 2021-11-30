@@ -15,10 +15,10 @@ export default function Home() {
 
         <h2>Please Select Your Simulation:</h2>
         <ul>
-          <li><Link href="http://amazon.localhost:4000/amazon">Amazon</Link></li>
-          <li><Link href="http://starbucks.localhost:4000/starbucks">Starbucks</Link></li>
-          <li><Link href="http://cart.localhost:4000/cart">Generic Shopping Cart</Link></li>
-          <li><Link href="http://robinhood.localhost:4000/robinhood">User Registration</Link></li>
+          <li><Link href="/amazon">Amazon</Link></li>
+          <li><Link href="/starbucks">Starbucks</Link></li>
+          <li><Link href="/cart">Generic Shopping Cart</Link></li>
+          <li><Link href="/robinhood">User Registration</Link></li>
           <li><Link href="/upsell">Upsell</Link></li>
         </ul>
       </main>
