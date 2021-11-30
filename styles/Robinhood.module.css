@@ -15,22 +15,22 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 169px;
+  width: 1690px;
   color: transparent;
-  height: 63px;
+  height: 630px;
 }
 .login.login {
   background-image: url(../public/wesalute.png);
   position: absolute;
-  top: 573px;
+  bottom: 1vh;
   background-size: 154px;
   background-repeat: no-repeat;
-  left: 130px;
+  left: 10vw;
   font-size: 13px;
   color: #00c806;
   text-decoration: none;
   width: 390px;
-  height: 91px;
+  height: 75px;
   padding-left: 174px;
-  padding-top: 32px;
+  padding-top: 1vh;
 }
