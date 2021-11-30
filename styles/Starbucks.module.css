@@ -1,5 +1,5 @@
 .main {
-  background-image: url(/Starbucks.png);
+  background-image: url(../public/Starbucks.png);
   max-width: 100%;
   margin: 0;
   background-size: cover;
@@ -20,7 +20,7 @@
   color: black;
   font-size: 13px;
   text-decoration: none;
-  background-image: url(/wesalute.png);
+  background-image: url(../public/wesalute.png);
   padding-left: 53px;
   min-height: 24px;
   background-size: contain;
