@@ -71,7 +71,8 @@ jobs:
           context: .
           file: ./Dockerfile
           build-args: |
-            BASE_PATH=${{ env.BASE_PATH }} PROTOCAL=${{ env.PROTOCAL }}
+            BASE_PATH=${{ env.BASE_PATH }}
+            PROTOCOL=${{ env.PROTOCOL }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: ${{ github.event_name != 'pull_request' }} # Don't push for PRs

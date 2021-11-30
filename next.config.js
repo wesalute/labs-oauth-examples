@@ -16,8 +16,8 @@ function getBasePath() {
 
   return basePath
 }
-function getProtocal() {
-  return (process.env.PROTOCAL && process.env.PROTOCAL == 'https') ? 'https' : 'http';
+function getProtocol() {
+  return (process.env.PROTOCOL && process.env.PROTOCOL == 'https') ? 'https' : 'http';
 }
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
   assetPrefix: getBasePath(),
   publicRuntimeConfig: {
     basePath: getBasePath(),
-    protocal: getProtocal()
+    protocol: getProtocol()
   },
   // Path rewrites config
   async rewrites() {

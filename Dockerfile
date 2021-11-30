@@ -17,6 +17,7 @@ COPY --from=deps /app/node_modules ./node_modules
 # Hardcode base path at build time...
 # ToDo: This is an ugly reality of having to hardcode the basePath for any SPAs at BUILD time (cannot be handled at runtime).
 ARG BASE_PATH
+ARG PROTOCOL
 RUN npm run build
 
 # Production image, copy all the files and run next
