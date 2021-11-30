@@ -1,0 +1,7 @@
+.github
+.next
+kustomize
+node_modules
+.env.*
+Dockerfile
+README.md
