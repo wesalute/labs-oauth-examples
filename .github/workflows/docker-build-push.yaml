@@ -19,9 +19,6 @@ defaults:
 
 env:
   DOCKER_IMAGE: oauth-examples
-  # ToDo: This is an ugly reality of having to hardcode the basePath for any SPAs at BUILD time (cannot be handled at runtime).
-  BASE_PATH: /oauth-examples
-  PROTOCAL: https
 
 jobs:
   build-push:
@@ -70,9 +67,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          build-args: |
-            BASE_PATH=${{ env.BASE_PATH }}
-            PROTOCOL=${{ env.PROTOCOL }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: ${{ github.event_name != 'pull_request' }} # Don't push for PRs

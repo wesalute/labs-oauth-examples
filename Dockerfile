@@ -16,8 +16,8 @@ COPY --from=deps /app/node_modules ./node_modules
 
 # Hardcode base path at build time...
 # ToDo: This is an ugly reality of having to hardcode the basePath for any SPAs at BUILD time (cannot be handled at runtime).
-ARG BASE_PATH
-ARG PROTOCOL
+ENV BASE_PATH="/oauth-examples"
+
 RUN npm run build
 
 # Production image, copy all the files and run next
@@ -41,5 +41,8 @@ EXPOSE 3000
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry.
 RUN npx next telemetry disable
+
+# Assume https protocol by default
+ENV PROTOCOL="https"
 
 CMD ["node_modules/.bin/next", "start"]
