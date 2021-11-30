@@ -5,7 +5,7 @@ import router from 'next/router';
 import { useEffect, useState } from 'react';
 
 function Cart({user_info}) {
-  const basePath = publicRuntimeConfig.basePath || router?.router?.basePath;
+  const basePath =  router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
   const [price, setPrice] = useState(262.94);
   const [discountedPrice, setDiscountedPrice] = useState(price);

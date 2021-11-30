@@ -7,19 +7,19 @@
 }
 .unredeemedText {
   position: absolute;
-  left: 151px;
-  width: 360px;
-  top: 130px;
-  height: 240px;
+  left: 11vw;
+  width: 24vw;
+  top: 20vh;
+  height: 34vh;
   text-indent: -99999px;
   overflow: hidden;
 }
 .redeemedText {
   position: absolute;
-  left: 151px;
-  width: 354px;
-  top: 130px;
-  height: 240px;
+  left: 11vw;
+  width: 24vw;
+  top: 20vh;
+  height: 34vh;
   overflow: hidden;
   background-color: rgba(0,0,0,.6);
   text-align: center;
