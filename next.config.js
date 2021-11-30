@@ -16,13 +16,17 @@ function getBasePath() {
 
   return basePath
 }
+function getProtocal() {
+  return (process.env.PROTOCAL && process.env.PROTOCAL == 'https') ? 'https' : 'http';
+}
 
 module.exports = {
   reactStrictMode: true,
   basePath: getBasePath(),
-  assetPrefix: getBasePath() ,
+  assetPrefix: getBasePath(),
   publicRuntimeConfig: {
-    basePath: getBasePath() ,
+    basePath: getBasePath(),
+    protocal: getProtocal()
   },
   // Path rewrites config
   async rewrites() {
