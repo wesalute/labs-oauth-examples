@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   // Here is where you would typically store the access token in a database.
   // We'll store them as cookies for this demo application.
-  const cookie_options = { req, res, maxAge: 60 * 60 * 24 };
+  const cookie_options = { req, res, maxAge: 60 * 60 * 24 * 365 };
   var decoded = jwt_decode(token.token.id_token);
   
   setCookies(`${req.query.client_id}_wesalute_id`, decoded.member_id, cookie_options);
