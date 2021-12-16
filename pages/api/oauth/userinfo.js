@@ -8,8 +8,15 @@ export default async function handler(req, res) {
   const client_id = req.query.client_id;
   const access_token = cookies[`${client_id}_access_token`];
   const refresh_token = cookies[`${client_id}_refresh_token`];
-  
-  let user = await fetchUserInfo(access_token);
+
+  let user = {};
+
+  if (access_token) {
+    user = await fetchUserInfo(access_token);
+  }
+  else {
+    return res.json({message: 'You must be logged in to view user info'});
+  }
   
   if (!user.error) {
     return res.json(user);
