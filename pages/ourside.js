@@ -14,7 +14,7 @@ function Ourside({user_info}) {
       const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=ourside`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
-      setMemberId(userinfo.member_id);
+      setMemberId(userinfo.memberId);
     })()
   }, []);
 

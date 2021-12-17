@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   else {
     return res.json({message: 'You must be logged in to view user info'});
   }
-  
+
   if (!user.error) {
     return res.json(user);
   }
@@ -36,12 +36,19 @@ export default async function handler(req, res) {
   }
 
   async function fetchUserInfo(token) {
-    const userinfo_raw = await fetch('https://k8s-dev.veteransadvantage.com/hydra/userinfo', {
+    const userinfo_raw = await fetch('https://us-central1-veterans-advantage-arsen-6bcc3.cloudfunctions.net/groupUserOauth', {
       headers: {
         "Authorization": `Bearer ${token}`
       }
     });
-    const userinfo = await userinfo_raw.json();
+    
+    let userinfo;
+    if (userinfo_raw.status !== 200) {
+      userinfo = {error: await userinfo_raw.json()}
+    }
+    else {
+      userinfo = await userinfo_raw.json();
+    }
     return userinfo;
   }
   
