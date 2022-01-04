@@ -4,7 +4,17 @@ import { publicRuntimeConfig } from 'next.config';
 import jwt_decode from "jwt-decode";
 
 export default async function handler(req, res) {
-  const token = await getToken(req.headers.host, req.query.code, req.query.client_id);
+  let token;
+
+  try {
+    token = await getToken(req.headers.host, req.query.code, req.query.client_id);
+  }
+  catch (e) {
+    console.log(e);
+  }
+  if (!token) {
+    return res.status(500).send("An error occurred");
+  }
   const basePath = publicRuntimeConfig.basePath;
 
   // Here is where you would typically store the access token in a database.
