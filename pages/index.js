@@ -21,6 +21,7 @@ export default function Home() {
           <li><Link href="/robinhood">User Registration</Link></li>
           <li><Link href="/ourside">Ourside</Link></li>
           <li><Link href="/upsell">Upsell</Link></li>
+          <li><Link href="/verified-offer">Verification Required</Link></li>
         </ul>
       </main>
       
