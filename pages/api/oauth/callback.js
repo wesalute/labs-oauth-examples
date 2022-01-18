@@ -4,9 +4,16 @@ import { publicRuntimeConfig } from 'next.config';
 import jwt_decode from "jwt-decode";
 
 export default async function handler(req, res) {
-  let token;
-
+  
   try {
+    const basePath = publicRuntimeConfig.basePath;
+    const destination = basePath ? `${publicRuntimeConfig.basePath}/${req.query.client_id}` : `/${req.query.client_id}`;
+    
+    if (!req.query.code) {
+      return res.redirect(302, destination);
+    }
+  
+    let token;
     token = await getToken(req.headers.host, req.query.code, req.query.client_id);
   }
   catch (e) {
@@ -15,7 +22,6 @@ export default async function handler(req, res) {
   if (!token) {
     return res.status(500).send("An error occurred");
   }
-  const basePath = publicRuntimeConfig.basePath;
 
   // Here is where you would typically store the access token in a database.
   // We'll store them as cookies for this demo application.
@@ -26,6 +32,5 @@ export default async function handler(req, res) {
   setCookies(`${req.query.client_id}_access_token`, token.token.access_token, cookie_options);
   setCookies(`${req.query.client_id}_refresh_token`, token.token.refresh_token, cookie_options);
   
-  const destination = basePath ? `${publicRuntimeConfig.basePath}/${req.query.client_id}` : `/${req.query.client_id}`;
   return res.redirect(302, destination);
 }
