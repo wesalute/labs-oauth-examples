@@ -13,7 +13,7 @@ function Starbucks({user_info}) {
       const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=starbucks`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
-      setMemberId(userinfo.memberId);
+      setMemberId(userinfo?.data?.member_id);
     })()
   }, []);
 

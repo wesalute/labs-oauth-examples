@@ -16,8 +16,8 @@ function Cart({user_info}) {
       const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=cart`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
-      setMemberId(userinfo.memberId);
-      if (userinfo.memberId) {
+      setMemberId(userinfo?.data?.member_id);
+      if (userinfo?.data?.member_id) {
         let newPrice = Number(price * .9).toFixed(1).toLocaleString();
         setDiscountedPrice(newPrice);
       }

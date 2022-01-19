@@ -13,7 +13,7 @@ function Amazon({user_info}) {
       const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=verified-offer`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
-      setMemberId(userinfo.memberId);
+      setMemberId(userinfo?.data?.member_id);
     })()
   }, []);
 
@@ -40,7 +40,7 @@ function Amazon({user_info}) {
 }
 
 function Connect({userLoaded, basePath}) {
-  return userLoaded ? <a className={styles.headerText} href={`${basePath}/api/oauth/redirect?client_id=verified-offer&verify=1`}>Click here to redeem an offer exlusively for premium Verified WeSalute members</a> : null;
+  return userLoaded ? <a className={styles.headerText} href={`${basePath}/api/oauth/redirect?client_id=verified-offer&verify=1`}>Click here to redeem an offer exlusively for verified WeSalute members</a> : null;
 }
 
 export default Amazon;

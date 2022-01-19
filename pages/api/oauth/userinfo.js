@@ -37,7 +37,7 @@ export default async function handler(req, res) {
   }
 
   async function fetchUserInfo(token) {
-    const userinfo_raw = await fetch('https://us-central1-veterans-advantage-arsen-6bcc3.cloudfunctions.net/groupUserOauth', {
+    const userinfo_raw = await fetch('https://checkout-dev.veteransadvantage.com/api/partner/member', {
       headers: {
         "Authorization": `Bearer ${token}`
       }
