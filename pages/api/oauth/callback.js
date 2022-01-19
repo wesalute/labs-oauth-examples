@@ -4,16 +4,14 @@ import { publicRuntimeConfig } from 'next.config';
 import jwt_decode from "jwt-decode";
 
 export default async function handler(req, res) {
+  let token;
+  const basePath = publicRuntimeConfig.basePath;
+  const destination = basePath ? `${publicRuntimeConfig.basePath}/${req.query.client_id}` : `/${req.query.client_id}`;
   
   try {
-    const basePath = publicRuntimeConfig.basePath;
-    const destination = basePath ? `${publicRuntimeConfig.basePath}/${req.query.client_id}` : `/${req.query.client_id}`;
-    
     if (!req.query.code) {
       return res.redirect(302, destination);
     }
-  
-    let token;
     token = await getToken(req.headers.host, req.query.code, req.query.client_id);
   }
   catch (e) {
