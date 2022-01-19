@@ -76,6 +76,10 @@
   max-width: 800px;
 }
 
+.listItem {
+  margin: 1em 0;
+}
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
