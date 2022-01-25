@@ -16,7 +16,10 @@ COPY --from=deps /app/node_modules ./node_modules
 
 # Hardcode base path at build time...
 # ToDo: This is an ugly reality of having to hardcode the basePath for any SPAs at BUILD time (cannot be handled at runtime).
-ENV BASE_PATH="/oauth-examples"
+# Note: ARG allows overriding the value at docker image build time via "--build-arg APP_BASE_PATH=/oauth-examples"
+ARG APP_BASE_PATH
+# Also store the value as an environment variable inside the built image
+ENV APP_BASE_PATH=${APP_BASE_PATH}
 
 RUN npm run build
 
