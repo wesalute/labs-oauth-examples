@@ -42,7 +42,7 @@ export default async function handler(req, res) {
   }
 
   async function fetchUserInfo(token) {
-    const userinfo_raw = await fetch('https://checkout-dev.veteransadvantage.com/api/partner/member', {
+    const userinfo_raw = await fetch(user_info_url, {
       headers: {
         "Authorization": `Bearer ${token}`
       }
