@@ -32,7 +32,7 @@ function getClients() {
   return (process.env.CLOUD_ENV === 'dev') ? clients : null;
 }
 function getUserInfoUrl() {
-  const url = "https://checkout-dev.veteransadvantage.com/api/partner/member";
+  const url = "https://account-dev.veteransadvantage.com/api/partner/member";
   return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 function getOauthUrl() {
