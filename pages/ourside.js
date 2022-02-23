@@ -21,7 +21,7 @@ function Ourside({user_info}) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Ourside Coffee</title>
+        <title>Ourside</title>
         <meta name="description" content="Demo of WeSalute Login" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
