@@ -6,17 +6,13 @@ import { useState, useEffect } from 'react';
 
 export default function Robinhood() {
   const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
-  const [member_id, setMemberId] = useState('');
-  const [userLoaded, setUserLoaded] = useState(false);
   const [homeClass, setHomeClass] = useState();
 
   useEffect(() => {
     (async () => {
       const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=robinhood`);
       const userinfo = await userinfo_raw.json();
-      setUserLoaded(true);
-      setMemberId(userinfo.member_id);
-      if (userinfo.member_id) {
+      if (userinfo && userinfo?.data?.member_id) {
         setHomeClass(styles.logged)
       }
       else {

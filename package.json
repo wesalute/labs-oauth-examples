@@ -2,7 +2,7 @@
   "name": "oauth-examples",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4000",
+    "dev": "CLOUD_ENV=dev next dev -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
     "lint": "next lint"
