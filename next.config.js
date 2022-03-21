@@ -36,7 +36,7 @@ function getUserInfoUrl() {
   return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 function getOauthUrl() {
-  const url = "https://k8s-dev.veteransadvantage.com";
+  const url = "https://idp-dev.wesaluteapis.com";
   return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 
