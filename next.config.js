@@ -20,8 +20,7 @@ function getProtocol() {
   return (process.env.PROTOCOL && process.env.PROTOCOL == 'https') ? 'https' : 'http';
 }
 function getClients() {
-  // Fallback list (dev)
-  const fallback_clients = {
+  const clients = {
     "amazon": {id: 'amazon-dev', secret: 'ERJV0XsNclYs._2lSNunue1_70'},
     "upsell": {id: 'upsell', secret: '8-RBdv~-A19ENyituvK8MHI8Ax'},
     "verified-offer": {id: 'verified-offer', secret: 'tBB1sD00i0S7VdZ03af1H8_d7l'},
@@ -30,20 +29,15 @@ function getClients() {
     "robinhood": {id: 'robinhood-dev', secret: 'GwiTYSBfWCz1VqZkjk0zHg_RoP'},
     "ourside": {id: 'paramount-dev', secret: 's-3CerDpR~YF4Q6erVnvKjk8ns'},
   }
-  // Get value from runtime environment (json)
-  return (process.env.OAUTH_CLIENTS) ? JSON.parse(process.env.OAUTH_CLIENTS) : fallback_clients;
+  return (process.env.CLOUD_ENV === 'dev') ? clients : null;
 }
 function getUserInfoUrl() {
-  // Fallback URL (dev)
-  const fallback_url = "https://account-dev.veteransadvantage.com/api/partner/member";
-  // Get value from runtime environment
-  return (process.env.USERINFO_ENDPOINT) ? process.env.USERINFO_ENDPOINT : fallback_url;
+  const url = "https://account-dev.veteransadvantage.com/api/partner/member";
+  return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 function getOauthUrl() {
-  // Fallback URL (dev)
-  const fallback_url = "https://idp-dev.wesaluteapis.com";
-  // Get value from runtime environment
-  return (process.env.OAUTH_ENDPOINT) ? process.env.OAUTH_ENDPOINT : fallback_url;
+  const url = "https://idp-dev.wesaluteapis.com";
+  return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 
 module.exports = {
