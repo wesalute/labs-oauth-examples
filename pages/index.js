@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <p className={styles.intro}>The following pages show a variety of simulated experiences in which brands connect to WeSalute using OAuth. Using these pages, simulated consumers may connect their WeSalute account to simulated third parties.
-        You may view and edit your connected brands on the <a href="https://checkout-dev.veteransadvantage.com/account/brand-connections">brand connections manager.</a></p>
+        You may view and edit your connected brands on the <a href="https://account.veteransadvantage.com/account/data-privacy">brand connections manager.</a></p>
 
         <h2>Please Select Your Simulation:</h2>
         <ul>
