@@ -9,8 +9,8 @@ export default async function handler(req, res) {
   const client_id = req.query.client_id;
   const access_token = cookies[`${client_id}_access_token`];
   const refresh_token = cookies[`${client_id}_refresh_token`];
-  
-  let user_info_url = 'https://account.veteransadvantage.com/api/partner/member';
+
+  let user_info_url = 'https://idp.wesaluteapis.com/userinfo';
   //Optionally allow this url to be overridden for the dev environment
   user_info_url = (serverRuntimeConfig.userInfoUrl) ? serverRuntimeConfig.userInfoUrl : user_info_url;
 
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
         "Authorization": `Bearer ${token}`
       }
     });
-    
+
     let userinfo;
     if (userinfo_raw.status !== 200) {
       userinfo = {error: await userinfo_raw.json()}
@@ -57,5 +57,5 @@ export default async function handler(req, res) {
     }
     return userinfo;
   }
-  
+
 }

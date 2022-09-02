@@ -1,7 +1,7 @@
 /*
  * Gets the APP_BASE_PATH from the command used to start this app.
- * If APP_BASE_PATH is specified but it does not start with a "/" 
- * then add it. 
+ * If APP_BASE_PATH is specified but it does not start with a "/"
+ * then add it.
  */
 function getBasePath() {
   var basePath = ''
@@ -12,7 +12,7 @@ function getBasePath() {
       } else {
           basePath = "/" + process.env.APP_BASE_PATH;
       }
-  } 
+  }
 
   return basePath
 }
@@ -32,7 +32,7 @@ function getClients() {
   return (process.env.CLOUD_ENV === 'dev') ? clients : null;
 }
 function getUserInfoUrl() {
-  const url = "https://account-dev.veteransadvantage.com/api/partner/member";
+  const url = "https://idp-dev.wesaluteapis.com/userinfo";
   return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 function getOauthUrl() {

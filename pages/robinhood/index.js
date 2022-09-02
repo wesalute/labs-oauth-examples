@@ -12,7 +12,7 @@ export default function Robinhood() {
     (async () => {
       const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=robinhood`);
       const userinfo = await userinfo_raw.json();
-      if (userinfo && userinfo?.data?.member_id) {
+      if (userinfo && userinfo?.member_id) {
         setHomeClass(styles.logged)
       }
       else {
@@ -31,7 +31,7 @@ export default function Robinhood() {
       <main className={`${homeClass} ${styles.background}`}>
         <a className={styles.registerLink} href={`${basePath}/robinhood/register`}>Register</a>
       </main>
-      
+
     </div>
   )
 }

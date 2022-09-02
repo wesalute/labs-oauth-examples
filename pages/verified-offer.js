@@ -13,7 +13,7 @@ function Amazon({user_info}) {
       const userinfo_raw = await fetch(`${basePath}/api/oauth/userinfo?client_id=verified-offer`);
       const userinfo = await userinfo_raw.json();
       setUserLoaded(true);
-      setMemberId(userinfo?.data?.member_id);
+      setMemberId(userinfo?.member_id);
     })()
   }, []);
 
