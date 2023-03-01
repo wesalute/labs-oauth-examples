@@ -19,6 +19,7 @@ function getBasePath() {
 function getProtocol() {
   return (process.env.PROTOCOL && process.env.PROTOCOL == 'https') ? 'https' : 'http';
 }
+// Override OAuth2 endpoint and client config in the dev environment
 function getClients() {
   const clients = {
     "amazon": {id: 'amazon-dev', secret: 'ERJV0XsNclYs._2lSNunue1_70'},
