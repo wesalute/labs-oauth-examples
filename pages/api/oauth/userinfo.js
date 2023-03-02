@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   const access_token = cookies[`${client_id}_access_token`];
   const refresh_token = cookies[`${client_id}_refresh_token`];
 
-  let user_info_url = 'https://idp.wesaluteapis.com/userinfo';
+  let user_info_url = 'https://account.wesaluteapis.com/userinfo';
   //Optionally allow this url to be overridden for the dev environment
   user_info_url = (serverRuntimeConfig.userInfoUrl) ? serverRuntimeConfig.userInfoUrl : user_info_url;
 

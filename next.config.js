@@ -33,7 +33,7 @@ function getClients() {
   return (process.env.CLOUD_ENV === 'dev') ? clients : null;
 }
 function getUserInfoUrl() {
-  const url = "https://idp-dev.wesaluteapis.com/userinfo";
+  const url = "https://account-dev.wesaluteapis.com/userinfo";
   return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 function getOauthUrl() {
