@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "CLOUD_ENV=dev next dev -p 4000",
+    "prod": "CLOUD_ENV=prod next dev -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
     "lint": "next lint"
