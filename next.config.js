@@ -40,6 +40,10 @@ function getOauthUrl() {
   return (process.env.CLOUD_ENV === 'dev') ? url : null;
 }
 
+function getCartClientId() {
+  return (process.env.CLOUD_ENV === 'prod') ? "85950f8c-41eb-4559-a543-c2fbc3a19690" : "a800a998-fac2-487a-a81d-4855b7906ee9";
+}
+
 module.exports = {
   reactStrictMode: true,
   basePath: getBasePath(),
@@ -47,6 +51,7 @@ module.exports = {
   publicRuntimeConfig: {
     basePath: getBasePath(),
     protocol: getProtocol(),
+    cartClientId: getCartClientId(),
   },
   //When this app runs in the WeSalute dev environment, we will connect
   //to the dev instance of all external services

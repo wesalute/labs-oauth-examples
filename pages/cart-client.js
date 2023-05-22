@@ -7,6 +7,7 @@ import Script from "next/script";
 
 function CartClient() {
   const basePath =  router?.router?.basePath || publicRuntimeConfig.basePath;
+  const cartClientId =  publicRuntimeConfig.cartClientId;
   const [member_id, setMemberId] = useState('');
   const [price, setPrice] = useState(262.94);
   const [discountedPrice, setDiscountedPrice] = useState(price);
@@ -36,7 +37,7 @@ function CartClient() {
         onReady={() => {
           initiateVABrandConnectionsComponent({
             // clientId: 'd73055df-24a9-4313-9968-0cdc99934d9e',
-            clientId: 'a800a998-fac2-487a-a81d-4855b7906ee9',
+            clientId: cartClientId,
             // premium: true,
             userInfo: function (data, error) {
               if (error) {
