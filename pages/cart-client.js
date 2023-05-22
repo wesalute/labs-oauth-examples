@@ -36,7 +36,6 @@ function CartClient() {
         src="https://va-brand-connections-loader-dev.firebaseapp.com/index.js"
         onReady={() => {
           initiateVABrandConnectionsComponent({
-            // clientId: 'd73055df-24a9-4313-9968-0cdc99934d9e',
             clientId: cartClientId,
             // premium: true,
             userInfo: function (data, error) {
