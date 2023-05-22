@@ -22,7 +22,6 @@ export default function Home() {
           <li className={styles.listItem}><Link href="/robinhood">User Registration</Link>- "Login with WeSalute" to newly register on partner sites. Similar to "login with facebook" or "login with google."</li>
           <li className={styles.listItem}><Link href="/ourside">Ourside</Link>- Connect your WeSalute account to a partner website, starting from a link hosted outside of the partner website. Useful for hosting offer links on veteransadvantage.com, in email messages, or on marketing sites.</li>
           <li className={styles.listItem}><Link href="/upsell">Premium Required</Link>- Connect your WeSalute account to a simulated amazon.com, but first require upgrading to a paid Vet Rewards account.</li>
-          <li className={styles.listItem}><Link href="/verified-offer">Verification Required</Link>- Connect your WeSalute account to a simulated amazon.com, but first require verification through a government database lookup or secure document upload.</li>
         </ul>
       </main>
       
