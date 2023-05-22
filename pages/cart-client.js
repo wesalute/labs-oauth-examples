@@ -5,7 +5,7 @@ import router from 'next/router';
 import { useEffect, useState } from 'react';
 import Script from "next/script";
 
-function CartBrandConnections() {
+function CartClient() {
   const basePath =  router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
   const [price, setPrice] = useState(262.94);
@@ -35,8 +35,9 @@ function CartBrandConnections() {
         src="https://va-brand-connections-loader-dev.firebaseapp.com/index.js"
         onReady={() => {
           initiateVABrandConnectionsComponent({
-            clientId: 'd73055df-24a9-4313-9968-0cdc99934d9e',
-            premium: true,
+            // clientId: 'd73055df-24a9-4313-9968-0cdc99934d9e',
+            clientId: 'a800a998-fac2-487a-a81d-4855b7906ee9',
+            // premium: true,
             userInfo: function (data, error) {
               if (error) {
                 console.log("error", error);
@@ -77,13 +78,14 @@ function CartBrandConnections() {
       <div className={styles.subtotal}>Subtotal: ${price}</div>
       <div className={styles.discount}>{member_id ? <div>Connected to WeSalute</div> : <Connect userLoaded={userLoaded} basePath={basePath}/>}</div>
       {member_id ? <Discounted price={price} discountedPrice={discountedPrice}/> : <div className={styles.total}>Total: ${price}</div>}
+
     </main>
     </div>
     )
   }
 
   function Connect({userLoaded, basePath}) {
-    return userLoaded ? <p>Connect WeSalute: <div id={"brand-connections-container"}></div></p> : null;
+    return userLoaded ? <div>Connect WeSalute: <div id={"brand-connections-container"}></div></div> : null;
   }
 
   function Discounted({price, discountedPrice}) {
@@ -96,4 +98,4 @@ function CartBrandConnections() {
     )
   }
 
-  export default CartBrandConnections;
+  export default CartClient;
