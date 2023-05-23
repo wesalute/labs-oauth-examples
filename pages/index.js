@@ -11,8 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <p className={styles.intro}>The following pages show a variety of simulated experiences in which brands connect to WeSalute using OAuth. Using these pages, simulated consumers may connect their WeSalute account to simulated third parties.
-          You may view and edit your connected brands on the <a href="https://account.veteransadvantage.com/account/data-privacy">brand connections manager.</a></p>
+        <p className={styles.intro}>The following pages show a variety of simulated experiences in which brands connect to WeSalute using OAuth. Using these pages, simulated consumers may connect their WeSalute account to simulated third parties.</p>
+        <p className={styles.intro}>View and edit your connected brands in the <a href="https://account.veteransadvantage.com/brand-connections">Connected Apps & Accounts</a> section of the user account.</p>
 
         <h2>Please Select Your Simulation:</h2>
         <ul>

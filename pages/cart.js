@@ -33,7 +33,7 @@ function Cart({ user_info }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1>Checkout your Blueline Cart</h1>
+        <h1>Checkout Your Shopping Cart</h1>
 
         <div className={styles.cartItem}>
           <img src={`${basePath}/10.png`} />
