@@ -58,7 +58,7 @@ function getUserInfoUrl() {
 
 function getwidgetUrl() {
   const url_dev   = "https://va-brand-connections-loader-dev.firebaseapp.com/index.js";
-  const url_prod  = "https://va-brand-connections-loader-prod.firebaseapp.com/index.js?cachebust=1";
+  const url_prod  = "https://va-brand-connections-loader-prod.firebaseapp.com/index.js";
   return (process.env.CLOUD_ENV === 'dev') ? url_dev : url_prod;
 }
 

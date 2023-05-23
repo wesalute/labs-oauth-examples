@@ -5,7 +5,7 @@ import router from 'next/router';
 import { useEffect, useState } from 'react';
 import Script from "next/script";
 
-function CartClient() {
+function CartClient(props) {
   const { publicRuntimeConfig } = getConfig();
   const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
