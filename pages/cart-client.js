@@ -25,8 +25,6 @@ function CartClient() {
     })()
   }, [userinfo]);
 
-  const isProd = () => typeof window !== "undefined" && window?.location?.host === "oauth-examples.arsenal.run.veteransadvantage.com";
-
   return (
     <div className={styles.container}>
       <Head>
@@ -35,13 +33,11 @@ function CartClient() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Script
-        src={isProd() ?
-          "https://va-brand-connections-loader-prod.firebaseapp.com/index.js?testdefdf" :
-          "https://va-brand-connections-loader-dev.firebaseapp.com/index.js"}
+        src={props.widgetUrl}
         onReady={() => {
-          const clientId = isProd() ? "85950f8c-41eb-4559-a543-c2fbc3a19690" : "a800a998-fac2-487a-a81d-4855b7906ee9"
+          console.log("[debug]", props.widgetUrl, props.clientId)
           initiateVABrandConnectionsComponent({
-            clientId: clientId,
+            clientId: `${props.clientId}`,
             // premium: true,
             userInfo: function (data, error) {
               if (error) {
@@ -104,3 +100,13 @@ function Discounted({ price, discountedPrice }) {
 }
 
 export default CartClient;
+
+export async function getServerSideProps(context) {
+  const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+  return {
+    props: {
+      widgetUrl: serverRuntimeConfig.widgetUrl,
+      clientId: serverRuntimeConfig.clients.cart.id
+    },
+  }
+}
