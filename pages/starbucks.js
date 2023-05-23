@@ -3,7 +3,7 @@ import styles from 'css/Starbucks.module.css';
 import router from 'next/router';
 import { useEffect, useState } from 'react';
 
-function Starbucks({user_info}) {
+function Starbucks({ user_info }) {
   const basePath = router?.router?.basePath;
   const [member_id, setMemberId] = useState('');
   const [userLoaded, setUserLoaded] = useState(false);
@@ -27,11 +27,11 @@ function Starbucks({user_info}) {
       <main className={styles.main}>
         <div className={styles.connect}>
           {member_id ?
-          <div className={styles.connected}>
-            <div className={styles.headerText}>Thank you for your service</div>
-          </div>
-          :
-          <Connect userLoaded={userLoaded} basePath={basePath}/>
+            <div className={styles.connected}>
+              <div className={styles.headerText}>Thank you for your service</div>
+            </div>
+            :
+            <Connect userLoaded={userLoaded} basePath={basePath} />
           }
         </div>
       </main>
@@ -39,7 +39,7 @@ function Starbucks({user_info}) {
   )
 }
 
-function Connect({userLoaded, basePath}) {
+function Connect({ userLoaded, basePath }) {
   return userLoaded ? <a className={styles.headerText} href={`${basePath}/api/oauth/redirect?client_id=starbucks`}>Military Discount</a> : null;
 }
 

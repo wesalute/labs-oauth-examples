@@ -5,6 +5,7 @@
   background-size: cover;
   height: 100vh;
 }
+
 .unredeemedText {
   position: absolute;
   left: 11vw;
@@ -14,6 +15,7 @@
   text-indent: -99999px;
   overflow: hidden;
 }
+
 .redeemedText {
   position: absolute;
   left: 11vw;
@@ -21,7 +23,7 @@
   top: 20vh;
   height: 34vh;
   overflow: hidden;
-  background-color: rgba(0,0,0,.6);
+  background-color: rgba(0, 0, 0, .6);
   text-align: center;
   padding: 39px 0;
   color: #ab0000;
@@ -30,6 +32,7 @@
   border-radius: 10px;
   font-weight: bold;
 }
+
 .redeemedText span {
   background-color: white;
   padding: .2em;

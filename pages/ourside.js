@@ -4,7 +4,7 @@ import router from 'next/router';
 import { publicRuntimeConfig } from 'next.config';
 import { useEffect, useState } from 'react';
 
-function Ourside({user_info}) {
+function Ourside({ user_info }) {
   const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
   const [userLoaded, setUserLoaded] = useState(false);
@@ -28,11 +28,11 @@ function Ourside({user_info}) {
       <main className={styles.main}>
         <div className={styles.connect}>
           {member_id ?
-          <div className={styles.connected}>
-            <div className={styles.redeemedText}><span>Offer Redeemed</span></div>
-          </div>
-          :
-          <Connect userLoaded={userLoaded} basePath={basePath}/>
+            <div className={styles.connected}>
+              <div className={styles.redeemedText}><span>Offer Redeemed</span></div>
+            </div>
+            :
+            <Connect userLoaded={userLoaded} basePath={basePath} />
           }
         </div>
       </main>
@@ -40,7 +40,7 @@ function Ourside({user_info}) {
   )
 }
 
-function Connect({userLoaded, basePath}) {
+function Connect({ userLoaded, basePath }) {
   return userLoaded ? <a className={styles.unredeemedText} href={`${basePath}/api/oauth/redirect?client_id=ourside`}>Military Discount</a> : null;
 }
 

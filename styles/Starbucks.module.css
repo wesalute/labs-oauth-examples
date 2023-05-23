@@ -5,6 +5,7 @@
   background-size: cover;
   height: 100vh;
 }
+
 .connect {
   position: fixed;
   top: 5vh;
@@ -16,6 +17,7 @@
   justify-content: flex-end;
   padding-right: 15px;
 }
+
 .headerText.headerText {
   color: black;
   font-size: 13px;
@@ -28,6 +30,7 @@
   padding-top: 4px;
   font-weight: bold;
 }
+
 .connected .headerText {
   color: black;
   display: flex;

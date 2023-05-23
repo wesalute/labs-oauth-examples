@@ -2,15 +2,19 @@
   height: 100vh;
   background-size: cover;
 }
+
 .home {
   background-image: url(../public/robinhood-home.png);
 }
+
 .logged {
   background-image: url(../public/robinhood-logged.png);
 }
+
 .register {
   background-image: url(../public/robinhood-register.png);
 }
+
 .registerLink {
   position: absolute;
   right: 0;
@@ -19,6 +23,7 @@
   color: transparent;
   height: 630px;
 }
+
 .login.login {
   background-image: url(../public/wesalute.png);
   position: absolute;

@@ -16,7 +16,7 @@ export default function Robinhood() {
       <main className={`${styles.register} ${styles.background}`}>
         <a className={styles.login} href={`${basePath}/api/oauth/redirect?client_id=robinhood`}>Login With WeSalute</a>
       </main>
-      
+
     </div>
   )
 }
