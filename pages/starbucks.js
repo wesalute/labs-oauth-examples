@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import styles from 'css/Starbucks.module.css';
+import getConfig from 'next/config';
 import router from 'next/router';
 import { useEffect, useState } from 'react';
 
 function Starbucks({ user_info }) {
-  const basePath = router?.router?.basePath;
+  const { publicRuntimeConfig } = getConfig();
+  const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
   const [userLoaded, setUserLoaded] = useState(false);
 

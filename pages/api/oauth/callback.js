@@ -1,10 +1,11 @@
 import { getToken } from 'lib/oauth';
 import { setCookies } from 'cookies-next';
-import { publicRuntimeConfig } from 'next.config';
+import getConfig from 'next/config';
 import jwt_decode from "jwt-decode";
 
 export default async function handler(req, res) {
   let token;
+  const { publicRuntimeConfig } = getConfig();
   const basePath = publicRuntimeConfig.basePath;
   const destination = basePath ? `${publicRuntimeConfig.basePath}/${req.query.client_id}` : `/${req.query.client_id}`;
 

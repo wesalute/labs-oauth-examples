@@ -1,9 +1,10 @@
 //Todo: get userinfo endpoint from environment variable
 import { refreshToken } from "lib/oauth";
 import { getCookies, setCookies } from "cookies-next";
-import { serverRuntimeConfig } from 'next.config';
+import getConfig from 'next/config';
 
 export default async function handler(req, res) {
+  const { serverRuntimeConfig } = getConfig();
   //Todo: refresh if expired
   const cookies = getCookies({ req, res });
   const client_id = req.query.client_id;

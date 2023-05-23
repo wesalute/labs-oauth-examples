@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import styles from 'css/Cart.module.css'
-import { publicRuntimeConfig } from 'next.config';
+import getConfig from 'next/config';
 import router from 'next/router';
 import { useEffect, useState } from 'react';
 import Script from "next/script";
 
 function CartClient() {
+  const { publicRuntimeConfig } = getConfig();
   const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
-
   const [member_id, setMemberId] = useState('');
   const [price, setPrice] = useState(262.94);
   const [discountedPrice, setDiscountedPrice] = useState(price);

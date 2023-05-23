@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import styles from 'css/WeSalute.module.css';
+import getConfig from 'next/config';
 import router from 'next/router';
-import { publicRuntimeConfig } from 'next.config';
 import { useEffect, useState } from 'react';
 
 function Ourside({ user_info }) {
+  const { publicRuntimeConfig } = getConfig();
   const basePath = router?.router?.basePath || publicRuntimeConfig.basePath;
   const [member_id, setMemberId] = useState('');
   const [userLoaded, setUserLoaded] = useState(false);
