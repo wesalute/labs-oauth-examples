@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Barebones Widget Demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <h1>Barebones Widget Demo</h1>
+  <p>
+    This is a barebones demo of the widget. It is intended to be used as a
+    starting point for your own implementation.
+  </p>
+
+  <h2>Usage</h2>
+  <p>
+    To use the widget, you must include the loader script and call the
+    <code>initiateVABrandConnectionsComponent</code> function.
+  </p>
+  <p>
+    The function takes two arguments:
+  </p>
+  <ol>
+    <li>
+      <code>options</code> - An object containing the following properties:
+      <ul>
+        <li>
+          <code>clientId</code> - Your client ID. This is provided to you by
+          your VA Brand Connections representative.
+        </li>
+        <li>
+          <code>premium</code> - A boolean indicating whether or not the user
+          must have a premium account to redeem an offer.
+        </li>
+        <li>
+          <code>userInfo</code> - A callback function that is called when the
+          user's information is available. The function takes two arguments:
+          <ul>
+            <li>
+              <code>data</code> - An object containing the user's information.
+            </li>
+            <li>
+              <code>error</code> - A string containing an error message if
+              there was an error retrieving the user's information.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    </ul>
+    </li>
+    <li>
+      <code>selector</code> - A string containing a CSS selector for the
+      element that the widget should be inserted into.
+    </li>
+  </ol>
+
+  <h2>Example</h2>
+  <p>
+    View this page's source to see the example code below.
+    View browser console for output.
+  </p>
+
+  <!-- Start of widget code -->
+  <!-- Widget script -->
+  <script src="https://va-brand-connections-loader-prod.firebaseapp.com/index.js"></script>
+  <!-- Widget initialization -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Widget initialization
+      initiateVABrandConnectionsComponent(
+        // Widget options
+        {
+          clientId: "85950f8c-41eb-4559-a543-c2fbc3a19690",
+          premium: false,
+          // Callback function to handle user info
+          userInfo: function (data, error) {
+            (data) ? console.log("[data]", data) : "";
+            (error) ? console.log("[error]", error) : "";
+          }
+        },
+        // Widget container selector
+        '#container'
+      );
+    });
+  </script>
+  <!-- Widget container -->
+  <div id="container"></div>
+  <!-- End of widget code -->
+
+</body>
+
+</html>
