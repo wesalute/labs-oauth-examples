@@ -35,10 +35,10 @@ function CartClient(props) {
       <Script
         src={props.widgetUrl}
         onReady={() => {
-          console.log("[debug]", props.widgetUrl, props.clientId)
+          console.log("[debug]", props.widgetUrl, props.clientId, props.premium)
           initiateVABrandConnectionsComponent({
             clientId: `${props.clientId}`,
-            // premium: true,
+            premium: props.premium,
             userInfo: function (data, error) {
               if (error) {
                 console.log("error", error);
@@ -103,10 +103,14 @@ export default CartClient;
 
 export async function getServerSideProps(context) {
   const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+  const { query } = context;
+
   return {
     props: {
       widgetUrl: serverRuntimeConfig.widgetUrl,
-      clientId: serverRuntimeConfig.clients.cart.id
+      clientId: serverRuntimeConfig.clients.cart.id,
+      // Dynamically set premium based on query string.
+      premium: (typeof query?.premium !== "undefined") ? true : false,
     },
   }
 }
