@@ -36,10 +36,10 @@ function CartClient(props) {
         src={props.widgetUrl}
         onReady={() => {
           console.log("[debug]", props.widgetUrl, props.clientId, props.premium)
-          initiateVABrandConnectionsComponent({
-            clientId: `${props.clientId}`,
+          initBrandConnections({
+            client_id: `${props.clientId}`,
             premium: props.premium,
-            userInfo: function (data, error) {
+            callback: function (data, error) {
               if (error) {
                 console.log("error", error);
               } else if (data) {
