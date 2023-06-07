@@ -17,7 +17,7 @@
   <h2>Usage</h2>
   <p>
     To use the widget, you must include the loader script and call the
-    <code>initiateVABrandConnectionsComponent</code> function.
+    <code>initBrandConnections</code> function.
   </p>
   <p>
     The function takes two arguments:
@@ -27,7 +27,7 @@
       <code>options</code> - An object containing the following properties:
       <ul>
         <li>
-          <code>clientId</code> - Your client ID. This is provided to you by
+          <code>client_id</code> - Your client ID. This is provided to you by
           your VA Brand Connections representative.
         </li>
         <li>
@@ -35,11 +35,11 @@
           must have a premium account to redeem an offer.
         </li>
         <li>
-          <code>userInfo</code> - A callback function that is called when the
+          <code>callback</code> - A callback function that is called when the
           user's information is available. The function takes two arguments:
           <ul>
             <li>
-              <code>data</code> - An object containing the user's information.
+              <code>data</code> - An object containing the user's information and access token: {profile: {}, access_token:""}.
             </li>
             <li>
               <code>error</code> - A string containing an error message if
@@ -48,8 +48,6 @@
           </ul>
         </li>
       </ul>
-    </li>
-    </ul>
     </li>
     <li>
       <code>selector</code> - A string containing a CSS selector for the
@@ -70,13 +68,13 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       // Widget initialization
-      initiateVABrandConnectionsComponent(
+      initBrandConnections(
         // Widget options
         {
-          clientId: "85950f8c-41eb-4559-a543-c2fbc3a19690",
+          client_id: "85950f8c-41eb-4559-a543-c2fbc3a19690",
           premium: false,
           // Callback function to handle user info
-          userInfo: function (data, error) {
+          callback: function (data, error) {
             (data) ? console.log("[data]", data) : "";
             (error) ? console.log("[error]", error) : "";
           }
