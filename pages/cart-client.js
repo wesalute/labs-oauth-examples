@@ -44,7 +44,7 @@ function CartClient(props) {
                 console.log("error", error);
               } else if (data) {
                 console.log("userInfo", data);
-                setUserinfo(data);
+                setUserinfo(data?.profile);
               }
             },
           }, '#brand-connections-container');
