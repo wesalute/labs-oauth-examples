@@ -43,7 +43,7 @@ function CartClient(props) {
               if (error) {
                 console.log("error", error);
               } else if (data) {
-                console.log("userInfo", data);
+                console.log("[data]", data);
                 setUserinfo(data?.profile);
               }
             },
