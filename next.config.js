@@ -57,7 +57,7 @@ function getUserInfoUrl() {
 }
 
 function getwidgetUrl() {
-  const url_dev   = "https://brand-connections-dev.veteransadvantage.com/widget.js";
+  const url_dev   = "https://brand-connections-dev.veteransadvantage.com/widget.js?test12636";
   const url_prod  = "https://brand-connections.veteransadvantage.com/widget.js";
   return (process.env.CLOUD_ENV === 'dev') ? url_dev : url_prod;
 }
