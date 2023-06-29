@@ -34,9 +34,9 @@ function CartClient(props) {
       </Head>
       <Script
         src={props.widgetUrl}
-        onReady={() => {
+        onReady={async() => {
           console.log("[debug]", props.widgetUrl, props.clientId, props.premium)
-          initBrandConnections({
+          await initBrandConnections({
             client_id: `${props.clientId}`,
             premium: props.premium,
             callback: function (data, error) {
@@ -77,16 +77,12 @@ function CartClient(props) {
           <div className={styles.trash}>🗑</div>
         </div>
         <div className={styles.subtotal}>Subtotal: ${price}</div>
-        <div className={styles.discount}>{member_id ? <div>Connected to WeSalute</div> : <Connect userLoaded={userLoaded} basePath={basePath} />}</div>
+        <div className={styles.discount}><div id={"brand-connections-container"}></div></div>
         {member_id ? <Discounted price={price} discountedPrice={discountedPrice} /> : <div className={styles.total}>Total: ${price}</div>}
 
       </main>
     </div>
   )
-}
-
-function Connect({ userLoaded, basePath }) {
-  return userLoaded ? <div>Connect WeSalute: <div id={"brand-connections-container"}></div></div> : null;
 }
 
 function Discounted({ price, discountedPrice }) {
