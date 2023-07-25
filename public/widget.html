@@ -31,10 +31,6 @@
           your VA Brand Connections representative.
         </li>
         <li>
-          <code>premium</code> - A boolean indicating whether or not the user
-          must have a premium account to redeem an offer.
-        </li>
-        <li>
           <code>callback</code> - A callback function that is called when the
           user's information is available. The function takes two arguments:
           <ul>
@@ -72,7 +68,6 @@
         // Widget options
         {
           client_id: "85950f8c-41eb-4559-a543-c2fbc3a19690",
-          premium: false,
           // Callback function to handle user info
           callback: function (data, error) {
             (data) ? console.log("[data]", data) : "";

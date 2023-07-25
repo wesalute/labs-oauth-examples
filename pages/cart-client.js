@@ -38,7 +38,6 @@ function CartClient(props) {
           console.log("[debug]", props.widgetUrl, props.clientId, props.premium)
           await initBrandConnections({
             client_id: `${props.clientId}`,
-            premium: props.premium,
             callback: function (data, error) {
               if (error) {
                 console.log("error", error);
@@ -105,8 +104,6 @@ export async function getServerSideProps(context) {
     props: {
       widgetUrl: serverRuntimeConfig.widgetUrl,
       clientId: serverRuntimeConfig.clients.cart.id,
-      // Dynamically set premium based on query string.
-      premium: (typeof query?.premium !== "undefined") ? true : false,
     },
   }
 }
