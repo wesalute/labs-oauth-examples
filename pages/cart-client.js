@@ -38,6 +38,11 @@ function CartClient(props) {
           console.log("[debug]", props.widgetUrl, props.clientId, props.premium)
           await initBrandConnections({
             client_id: `${props.clientId}`,
+            connectText: "Sign In",
+            disconnectText: "Sign Out",
+            loggedOut: function () {
+              console.log("User logged out!");
+            },
             callback: function (data, error) {
               if (error) {
                 console.log("error", error);
