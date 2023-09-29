@@ -38,7 +38,7 @@ function CartClient(props) {
           console.log("[debug]", props.widgetUrl, props.clientId, props.premium)
           await initBrandConnections({
             client_id: `${props.clientId}`,
-            size: "small",
+            // size: "small",
             // connectText: "Sign In",
             // disconnectText: "Sign Out",
             // loggedOut: function () {
