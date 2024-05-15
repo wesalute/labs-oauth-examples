@@ -40,11 +40,7 @@
   display: flex;
   justify-content: end;
   text-align: right;
-  background-image: url(../public/wesalute.png);
-  background-size: 40px;
-  background-repeat: no-repeat;
   margin: 30px 0;
-  background-position: 380px 0;
   height: 30px;
 }
 
