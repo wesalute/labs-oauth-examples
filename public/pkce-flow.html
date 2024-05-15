@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>OAuth PKCE Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+
+<body>
+  <h1>OAuth PKCE flow</h1>
+  <button id="authorize">Authorize</button>
+  <p id="token"></p>
+  <pre id="userinfo"></pre>
+
+  <script>
+    const clientId = 'c71c5daa-91b1-4bdb-b4c7-49aebc1aebda';
+    const authUrl = 'https://idp.wesaluteapis.com/oauth2/auth';
+    const tokenUrl = 'https://idp.wesaluteapis.com/oauth2/token';
+    const redirectUri = window.location.href.split('?')[0];
+    const userinfoUrl = 'https://account.wesaluteapis.com/userinfo';
+
+    function generateCodeVerifier() {
+      let result = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      for (let i = 0; i < 128; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
+
+    function generateCodeChallenge(verifier) {
+      return CryptoJS.SHA256(verifier).toString(CryptoJS.enc.Base64)
+        .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+    }
+
+    document.getElementById('authorize').addEventListener('click', function () {
+      const codeVerifier = generateCodeVerifier();
+      const codeChallenge = generateCodeChallenge(codeVerifier);
+      const state = generateCodeVerifier(); // Use the same function to generate a state
+
+      // Store the codeVerifier and state in localStorage
+      localStorage.setItem('codeVerifier', codeVerifier);
+      localStorage.setItem('state', state);
+
+      const authParams = new URLSearchParams({
+        response_type: 'code',
+        client_id: clientId,
+        redirect_uri: redirectUri,
+        code_challenge: codeChallenge,
+        code_challenge_method: 'S256',
+        state: state, // Add the state to the authorization request
+        scope: 'openid email profile consumer.tier consumer.audience' // Add the required scopes here
+      });
+
+      window.location.href = `${authUrl}?${authParams.toString()}`;
+    });
+
+    window.addEventListener('load', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+      const returnedState = urlParams.get('state'); // Get the state from the callback
+
+      // Retrieve the codeVerifier and state from localStorage
+      const codeVerifier = localStorage.getItem('codeVerifier');
+      const state = localStorage.getItem('state');
+
+      // Check if the state is the same as the one sent in the authorization request
+      if (code && state === returnedState) {
+        const tokenParams = new URLSearchParams({
+          grant_type: 'authorization_code',
+          code: code,
+          redirect_uri: redirectUri,
+          client_id: clientId,
+          code_verifier: codeVerifier
+        });
+
+        axios.post(tokenUrl, tokenParams)
+          .then(response => {
+            const accessToken = response.data.access_token;
+            document.getElementById('token').innerText = 'Access Token: ' + accessToken;
+
+            // Make a request to the /userinfo endpoint
+            return axios.get(userinfoUrl, {
+              headers: {
+                Authorization: `Bearer ${accessToken}`
+              }
+            });
+          })
+          .then(response => {
+            // Print the user info in a nicely formatted way
+            document.getElementById('userinfo').innerText = JSON.stringify(response.data, null, 2);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
+    });
+  </script>
+</body>
+
+</html>
