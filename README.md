@@ -15,4 +15,4 @@ You will need a Node.js runtime installed locally.
 
 You will need a valid WeSalute account to log in. Ask for a test one if it was not provided to you.
 
-To view and revoke brand connections for your account see https://account.veteransadvantage.com/brand-connections
+To view and revoke brand connections for your account see https://account.wesalute.com/brand-connections
