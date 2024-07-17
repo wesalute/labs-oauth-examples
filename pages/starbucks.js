@@ -17,7 +17,7 @@ function Starbucks({ user_info }) {
       setUserLoaded(true);
       setMemberId(userinfo?.member_id);
     })()
-  }, []);
+  }, [basePath]);
 
   return (
     <div className={styles.container}>

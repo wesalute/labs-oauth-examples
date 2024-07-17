@@ -3,6 +3,7 @@ import styles from 'css/Cart.module.css'
 import getConfig from 'next/config';
 import router from 'next/router';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 function Cart({ user_info }) {
   const { publicRuntimeConfig } = getConfig();
@@ -23,7 +24,7 @@ function Cart({ user_info }) {
         setDiscountedPrice(newPrice);
       }
     })()
-  }, []);
+  }, [basePath, price]);
 
   return (
     <div className={styles.container}>
@@ -36,7 +37,7 @@ function Cart({ user_info }) {
         <h1>Checkout Your Shopping Cart</h1>
 
         <div className={styles.cartItem}>
-          <img src={`${basePath}/10.png`} />
+          <Image src={`${basePath}/10.png`} alt="" width={100} height={110} />
           <div className={styles.productName}>10 pound Widget</div>
           <div className={styles.productQuantity}><input defaultValue="5" /></div>
           <div className={styles.price}>$39.99</div>
@@ -44,7 +45,7 @@ function Cart({ user_info }) {
         </div>
 
         <div className={styles.cartItem}>
-          <img src={`${basePath}/20.png`} />
+          <Image src={`${basePath}/20.png`} alt="" width={100} height={110} />
           <div className={styles.productName}>20 pound Widget</div>
           <div className={styles.productQuantity}><input defaultValue="1" /></div>
           <div className={styles.price}>$59.99</div>
@@ -52,7 +53,7 @@ function Cart({ user_info }) {
         </div>
 
         <div className={styles.cartItem}>
-          <img src={`${basePath}/blue.png`} />
+          <Image src={`${basePath}/blue.png`} alt="" width={100} height={110} />
           <div className={styles.productName}>Blue Widget</div>
           <div className={styles.productQuantity}><input defaultValue="1" /></div>
           <div className={styles.price}>$3.00</div>
