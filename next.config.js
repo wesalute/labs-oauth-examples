@@ -59,7 +59,6 @@ function getwidgetUrl() {
 module.exports = {
   reactStrictMode: true,
   basePath: getBasePath(),
-  assetPrefix: getBasePath(),
   publicRuntimeConfig: {
     basePath: getBasePath(),
     protocol: getProtocol(),
