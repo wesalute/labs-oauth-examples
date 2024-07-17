@@ -21,9 +21,7 @@ export default function Home() {
           <li className={styles.listItem}><Link href="/cart">Shopping Cart</Link> - Connect your WeSalute account during checkout at an online store.</li>
           <li className={styles.listItem}><Link href="/cart-client">Shopping Cart (client-side)</Link> - Connect your WeSalute account during checkout at an online store.</li>
           <li className={styles.listItem}><Link href="/widget.html">Widget (client-side)</Link> - Barebones HTML example. Intended to be used as a starting point for your own client-side implementation.</li>
-          <li className={styles.listItem}><Link href="/robinhood">User Registration</Link> - "Login with WeSalute" to newly register on partner sites. Similar to "login with facebook" or "login with google."</li>
           <li className={styles.listItem}><Link href="/ourside">Ourside</Link> - Connect your WeSalute account to a partner website, starting from a link hosted outside of the partner website. Useful for hosting offer links on wesalute.com, in email messages, or on marketing sites.</li>
-          {/* <li className={styles.listItem}><Link href="/upsell">Premium Required</Link> - Connect your WeSalute account to a simulated amazon.com, but first require upgrading to a paid Vet Rewards account.</li> */}
           <li className={styles.listItem}><Link href="/pkce-flow.html">PKCE flow (client-side)</Link> - Barebones HTML example of the OAuth PKCE client-side flow.</li>
         </ul>
       </main>

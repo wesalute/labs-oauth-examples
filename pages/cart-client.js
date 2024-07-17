@@ -35,7 +35,7 @@ function CartClient(props) {
       <Script
         src={props.widgetUrl}
         onReady={async() => {
-          console.log("[debug]", props.widgetUrl, props.clientId, props.premium)
+          console.log("[debug]", props.widgetUrl, props.clientId)
           await initBrandConnections({
             client_id: `${props.clientId}`,
             // size: "small",

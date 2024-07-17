@@ -25,7 +25,6 @@ function getProtocol() {
 function getClients() {
   const clients_dev = {
     "amazon": { id: 'd73055df-24a9-4313-9968-0cdc99934d9e', secret: 'QO3FBV9GdFnPvFXah6H1Oq3pk' },
-    "upsell": { id: 'c103bd6b-c1bf-4973-9383-7a23b2bb460a', secret: 'LTodDiMpa4OnAMUCN-Rb1vyUWf' },
     "starbucks": { id: '9f530122-b931-4e90-9776-f939d2af1218', secret: 'hEOv80fb1qvLTIOivKWDENeak.' },
     "cart": { id: 'a800a998-fac2-487a-a81d-4855b7906ee9', secret: 'wQNWTzTBgKe4H1v0z3d8PU8GQc' },
     "ourside": { id: 'd739e52a-2c81-4585-bf43-426694cc566b', secret: 'u4DRjS6Ksx.uo0yPO9U2hG8Iu.' },
@@ -33,7 +32,6 @@ function getClients() {
 
   const clients_prod = {
     "amazon": { id: 'b4e310d4-03b1-4332-9535-dd4e1fa432ab', secret: 'UuzLLnsIJA3iVgiujAA3XDAdnr' },
-    "upsell": { id: 'db0aa28a-e95f-4e8b-9ae8-15b0e6c7587b', secret: '3kqPD7iqE-aIUjuT5NjqsQCpG1' },
     "starbucks": { id: '305ce244-1f70-4c05-8e6f-37068bb1bd77', secret: '0nGO_x.3WN9jtNveDUu4xT6J18' },
     "cart": { id: '85950f8c-41eb-4559-a543-c2fbc3a19690', secret: '5IGNEM8FZrMWpGeP~l.WtsARrs' },
     "ourside": { id: 'ac5b84e7-9698-4338-b9f5-67e000f955d9', secret: '-XwerH50O5_ZgJHnct_ft4t9uF' },
