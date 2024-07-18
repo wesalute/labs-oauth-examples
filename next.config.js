@@ -24,14 +24,10 @@ function getProtocol() {
 // Override OAuth2 endpoint and client config in the dev environment
 function getClients() {
   const clients_dev = {
-    "amazon": { id: 'd73055df-24a9-4313-9968-0cdc99934d9e', secret: 'QO3FBV9GdFnPvFXah6H1Oq3pk' },
-    "starbucks": { id: '9f530122-b931-4e90-9776-f939d2af1218', secret: 'hEOv80fb1qvLTIOivKWDENeak.' },
     "cart": { id: 'a800a998-fac2-487a-a81d-4855b7906ee9', secret: 'wQNWTzTBgKe4H1v0z3d8PU8GQc' },
   }
 
   const clients_prod = {
-    "amazon": { id: 'b4e310d4-03b1-4332-9535-dd4e1fa432ab', secret: 'UuzLLnsIJA3iVgiujAA3XDAdnr' },
-    "starbucks": { id: '305ce244-1f70-4c05-8e6f-37068bb1bd77', secret: '0nGO_x.3WN9jtNveDUu4xT6J18' },
     "cart": { id: '85950f8c-41eb-4559-a543-c2fbc3a19690', secret: '5IGNEM8FZrMWpGeP~l.WtsARrs' },
   }
 
