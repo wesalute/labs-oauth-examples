@@ -22,19 +22,27 @@ function getProtocol() {
 }
 
 // Override OAuth2 endpoint and client config in the dev environment
-function getClients() {
+function getOAuthClients() {
   const clients_dev = {
-    "cart": { id: 'a800a998-fac2-487a-a81d-4855b7906ee9', secret: 'wQNWTzTBgKe4H1v0z3d8PU8GQc' },
+    "cart": {
+      id: 'a800a998-fac2-487a-a81d-4855b7906ee9', 
+      secret: 'wQNWTzTBgKe4H1v0z3d8PU8GQc',
+      scope: 'openid offline email profile consumer.audience consumer.tier'
+     },
   }
 
   const clients_prod = {
-    "cart": { id: '85950f8c-41eb-4559-a543-c2fbc3a19690', secret: '5IGNEM8FZrMWpGeP~l.WtsARrs' },
+    "cart": {
+      id: '85950f8c-41eb-4559-a543-c2fbc3a19690', 
+      secret: '5IGNEM8FZrMWpGeP~l.WtsARrs',
+      scope: 'openid offline email profile consumer.audience consumer.tier'
+    },
   }
 
   return (process.env.CLOUD_ENV === 'dev') ? clients_dev : clients_prod;
 }
 
-function getOauthUrl() {
+function getOAuthUrl() {
   const url_dev   = "https://fervent-dewdney-gqdkbt8xn7.projects.oryapis.com";
   const url_prod  = "https://idp.wesaluteapis.com";
   return (process.env.CLOUD_ENV === 'dev') ? url_dev : url_prod;
@@ -62,8 +70,8 @@ module.exports = {
   //When this app runs in the WeSalute dev environment, we will connect
   //to the dev instance of all external services
   serverRuntimeConfig: {
-    clients: getClients(),
-    oauthUrl: getOauthUrl(),
+    clients: getOAuthClients(),
+    oauthUrl: getOAuthUrl(),
     userInfoUrl: getUserInfoUrl(),
     widgetUrl: getwidgetUrl()
   },

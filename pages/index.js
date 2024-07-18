@@ -16,8 +16,6 @@ export default function Home() {
 
         <h2>Please Select Your Simulation:</h2>
         <ul>
-          <li className={styles.listItem}><Link href="/amazon">Amazon</Link> - Connect your WeSalute account to a simulated amazon.com.</li>
-          <li className={styles.listItem}><Link href="/starbucks">Starbucks</Link> - Connect your WeSalute account to a simulated starbucks.com.</li>
           <li className={styles.listItem}><Link href="/cart">Shopping Cart</Link> - Connect your WeSalute account during checkout at an online store.</li>
           <li className={styles.listItem}><Link href="/cart-client">Shopping Cart (client-side)</Link> - Connect your WeSalute account during checkout at an online store.</li>
           <li className={styles.listItem}><Link href="/widget.html">Widget (client-side)</Link> - Barebones HTML example. Intended to be used as a starting point for your own client-side implementation.</li>

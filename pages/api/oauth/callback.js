@@ -1,4 +1,4 @@
-import { getToken } from 'lib/oauth';
+import { getAccessToken } from 'lib/oauth';
 import { setCookies } from 'cookies-next';
 import getConfig from 'next/config';
 import jwt_decode from "jwt-decode";
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     if (!req.query.code) {
       return res.redirect(302, destination);
     }
-    token = await getToken(req.headers.host, req.query.code, req.query.client_id);
+    token = await getAccessToken(req.headers.host, req.query.code, req.query.client_id);
   }
   catch (e) {
     console.log(e);
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     return res.status(500).send("An error occurred");
   }
 
-  // Here is where you would typically store the access token in a database.
+  // Here is where you would typically store the access/refresh tokens in a database.
   // We'll store them as cookies for this demo application.
   const cookie_options = { req, res, maxAge: 60 * 60 * 24 * 365 };
   var decoded = jwt_decode(token.token.id_token);

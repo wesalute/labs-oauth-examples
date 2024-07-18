@@ -34,13 +34,30 @@
 .subtotal {
   text-align: right;
   font-weight: bold;
+  margin: 10px;
+}
+
+.headerText {
+  font-size: 14px;
+}
+
+.connect {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.userInfo {
+  text-align: right;
+  margin: 10px;
+  font-size: 12px;
 }
 
 .discount {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
   text-align: right;
-  margin: 30px 0;
+  margin: 10px;
   height: 30px;
 }
 
