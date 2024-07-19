@@ -25,8 +25,8 @@ function getProtocol() {
 function getOAuthClients() {
   const clients_dev = {
     "cart": {
-      id: 'a800a998-fac2-487a-a81d-4855b7906ee9', 
-      secret: 'wQNWTzTBgKe4H1v0z3d8PU8GQc',
+      id: '79ec9a31-1e21-4458-bf99-3e8ee82b3ab7', 
+      secret: 'buU5MOorZ2UZk48HlqNmW_zoE',
       scope: 'openid offline email profile consumer.audience consumer.tier'
      },
   }
