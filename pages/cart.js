@@ -17,6 +17,8 @@ function Cart() {
   // Reset the user info state when the user disconnects
   const userDisconnect = () => {
     setUserInfo({});
+    setDiscount(0);
+    setDiscountedPrice(price);
   };
 
   useEffect(() => {
@@ -28,10 +30,10 @@ function Cart() {
           if (!response.ok) {
             throw new Error('Failed to fetch user info');
           }
-          setUserLoaded(true); // Set userLoaded to true to prevent infinite loop
-
           const data = await response.json();
-          data.member_id ? setUserInfo(data) : setUserInfo({}); // Set userInfo to the response data
+          setUserLoaded(true); // Set userLoaded to true to prevent infinite loop
+          setUserInfo(data); // Set userInfo to the response data
+          console.log("userInfo:", data);
         } catch (error) {
           console.error('Error fetching user info:', error);
         }
@@ -40,17 +42,14 @@ function Cart() {
       // Calculate the discounted price based on user properties
       if (userInfo?.tier) {
         let discount = 0;
-        if (userInfo.tier == 'basic') discount = 0.10; // Basic tier gets 10% discount
-        if (userInfo.tier == 'premium') discount = 0.20; // Premium tier gets 20% discount
+        if (userInfo.tier == 'basic') discount = 0.20; // Basic tier gets 20% discount
+        if (userInfo.tier == 'premium') discount = 0.30; // Premium tier gets 30% discount
         let discountedPrice = Number(price * (1 - discount)).toFixed(2); // Calculate the discounted price
         setDiscount(discount);
         setDiscountedPrice(discountedPrice);
-      } else {
-        setDiscount(0);
-        setDiscountedPrice(price);
       }
     })()
-  }, [userLoaded, basePath, price, userInfo]);
+  }, [userLoaded, basePath, userInfo, price]);
 
   return (
     <div className={styles.container}>

@@ -18,6 +18,8 @@ function CartClient(props) {
   // Reset the user info state when the user disconnects
   const userDisconnect = () => {
     setUserInfo({});
+    setDiscount(0);
+    setDiscountedPrice(price);
   };
 
   useEffect(() => {
@@ -25,14 +27,11 @@ function CartClient(props) {
       // Calculate the discounted price based on user properties
       if (userInfo?.tier) {
         let discount = 0;
-        if (userInfo.tier == 'basic') discount = 0.10; // Basic tier gets 10% discount
-        if (userInfo.tier == 'premium') discount = 0.20; // Premium tier gets 20% discount
+        if (userInfo.tier == 'basic') discount = 0.20; // Basic tier gets 20% discount
+        if (userInfo.tier == 'premium') discount = 0.30; // Premium tier gets 30% discount
         let discountedPrice = Number(price * (1 - discount)).toFixed(2); // Calculate the discounted price
         setDiscount(discount);
         setDiscountedPrice(discountedPrice);
-      } else {
-        setDiscount(0);
-        setDiscountedPrice(price);
       }
     })()
   }, [userInfo, price]);
@@ -50,7 +49,7 @@ function CartClient(props) {
           console.log("[debug]", props.widgetUrl, props.clientId)
           await initBrandConnections({
             client_id: `${props.clientId}`,
-            // size: "small",
+            size: "xs",
             // connectText: "Sign In",
             // disconnectText: "Sign Out",
             callback: function (data, error) {
