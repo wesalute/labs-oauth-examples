@@ -1,5 +1,5 @@
 import { getAccessToken } from 'lib/oauth';
-import { setCookies } from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import getConfig from 'next/config';
 import jwt_decode from "jwt-decode";
 
@@ -27,9 +27,9 @@ export default async function handler(req, res) {
   const cookie_options = { req, res, maxAge: 60 * 60 * 24 * 365 };
   var decoded = jwt_decode(token.token.id_token);
 
-  setCookies(`${req.query.client_id}_wesalute_id`, decoded.member_id, cookie_options);
-  setCookies(`${req.query.client_id}_access_token`, token.token.access_token, cookie_options);
-  setCookies(`${req.query.client_id}_refresh_token`, token.token.refresh_token, cookie_options);
+  setCookie(`${req.query.client_id}_wesalute_id`, decoded.member_id, cookie_options);
+  setCookie(`${req.query.client_id}_access_token`, token.token.access_token, cookie_options);
+  setCookie(`${req.query.client_id}_refresh_token`, token.token.refresh_token, cookie_options);
 
   return res.redirect(302, destination);
 }

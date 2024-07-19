@@ -1,6 +1,6 @@
 //Todo: get userinfo endpoint from environment variable
 import { refreshToken } from "lib/oauth";
-import { getCookies, setCookies } from "cookies-next";
+import { getCookies, setCookie } from "cookies-next";
 import getConfig from 'next/config';
 
 export default async function handler(req, res) {
@@ -31,8 +31,8 @@ export default async function handler(req, res) {
     user = await fetchUserInfo(newToken.access_token);
     if (!user.error) {
       const cookie_options = { req, res, maxAge: 60 * 60 * 24 * 365 };
-      setCookies(`${req.query.client_id}_access_token`, newToken.access_token, cookie_options);
-      setCookies(`${req.query.client_id}_refresh_token`, newToken.refresh_token, cookie_options);
+      setCookie(`${req.query.client_id}_access_token`, newToken.access_token, cookie_options);
+      setCookie(`${req.query.client_id}_refresh_token`, newToken.refresh_token, cookie_options);
     }
     return res.json(user);
   }
