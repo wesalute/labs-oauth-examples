@@ -27,9 +27,6 @@ function Cart() {
       if (!userLoaded) {
         try {
           const response = await fetch(`${basePath}/api/oauth/userinfo?client_id=cart`);
-          if (!response.ok) {
-            throw new Error('Failed to fetch user info');
-          }
           const data = await response.json();
           setUserLoaded(true); // Set userLoaded to true to prevent infinite loop
           setUserInfo(data); // Set userInfo to the response data

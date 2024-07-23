@@ -15,16 +15,21 @@ export default async function handler(req, res) {
   let refresh_token = cookies[`${client_id}_refresh_token`] || null;
 
   // Function to fetch user information from the OAuth provider using the access token
-  async function fetchUserInfo(access_token) {
+  async function fetchUserInfo(accessToken) {
     const response = await fetch(user_info_url, {
-      headers: { "Authorization": `Bearer ${access_token}` }
+      headers: { Authorization: `Bearer ${accessToken}` },
     });
-    return response.status === 200 ? response.json() : { error: await response.json() };
+    if (response.ok) {
+      return response.json();
+    } else {
+      const errorResponse = await response.json();
+      return { error: errorResponse };
+    }
   }
 
   // Function to attempt refreshing the access token using the refresh token
   async function attemptTokenRefresh() {
-    if (!refresh_token) return null; // Exit if no refresh token is available
+    if (!refresh_token) return; // Exit if no refresh token is available
     const newTokenData = await refreshAccessToken(client_id, refresh_token);
     if (newTokenData?.access_token && newTokenData?.refresh_token) {
       // Update tokens in cookies
@@ -33,36 +38,44 @@ export default async function handler(req, res) {
       setCookie(`${client_id}_refresh_token`, newTokenData.refresh_token, cookie_options);
       return newTokenData.access_token; // Return the new access token
     }
-    return null; // Token refresh failed
+    return; // Token refresh failed
   }
 
   // Main logic for handling user info requests
-  //// If no access token is available but a refresh token is, use the refresh token to get a new access token
-  if (!access_token && refresh_token) {
-    console.log('No access token found, attempting to refresh...');
-    access_token = await attemptTokenRefresh();
-    if (!access_token) { // If still no access token, respond with an error message
-      return res.json({ message: 'You must be logged in to view user info' });
-    }
-  }
-
-  //// Attempt to fetch user info with the access token
+  // Attempt to fetch user info with the access token
   let user = await fetchUserInfo(access_token);
-  // If fetching fails and a refresh token is available, use the refresh token to get a new access token
-  if (user.error && refresh_token) {
-    console.error('Error fetching user info with access token, attempting to refresh token...');
+
+  // Return the user info if it was fetched successfully
+  if (!user.error) {
+    console.log('User info fetched successfully:', user);
+    return res.json(user);
+  }
+  
+  // If we got here, the access token was invalid, clear the access token, we will attempt to refresh it
+  access_token = null;
+  console.error('Error fetching user info:', user.error);
+
+  // Attempt to refresh the access token if a refresh token is available
+  if (refresh_token) {
+    console.log('Attempting to refresh access token...');
     access_token = await attemptTokenRefresh();
-    if (!access_token) { // If still no access token, respond with an error message
-      return res.json({ message: 'You must be logged in to view user info' });
-    }
   }
 
-  //// Fetch user info
+  // Token refresh failed, there is nothing more we can do, respond with an error
+  if (!access_token) {
+    return res.status(401).json({ message: 'You must be logged in to view user info' });
+  }
+
+  // Attempt to fetch user info again with the new access token
   user = await fetchUserInfo(access_token);
-  if (user.error) {
-    console.log(user.error);
-    return res.status(user.error.status || 500).json(user.error);
-  } else {
+
+  // If the user info was fetched successfully, respond with the user info
+  if (!user.error) {
+    console.log('User info fetched successfully:', user);
     return res.json(user);
+  } else {
+    // Respond with the user info or an error
+    console.error('Error fetching user info with refreshed access token:', user.error);
+    return res.status(401).json({ message: user.error });
   }
 }

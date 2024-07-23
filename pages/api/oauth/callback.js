@@ -28,11 +28,11 @@ export default async function handler(req, res) {
   // Here is where you would typically store the access/refresh tokens in a database.
   // We'll store them as cookies for this demo application.
   const cookie_options = { req, res, maxAge: 60 * 60 * 24 * 365 };
-  var decoded = jwt_decode(token.token.id_token);
+  var decoded = jwt_decode(token.id_token);
 
   setCookie(`${req.query.client_id}_wesalute_id`, decoded.member_id, cookie_options);
-  setCookie(`${req.query.client_id}_access_token`, token.token.access_token, cookie_options);
-  setCookie(`${req.query.client_id}_refresh_token`, token.token.refresh_token, cookie_options);
+  setCookie(`${req.query.client_id}_access_token`, token.access_token, cookie_options);
+  setCookie(`${req.query.client_id}_refresh_token`, token.refresh_token, cookie_options);
 
   return res.redirect(302, destination);
 }
