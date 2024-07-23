@@ -11,7 +11,7 @@ You will need a Node.js runtime installed locally.
 - Clone this repositor
 - Run `npm install`
 - Run `npm run dev` (for WeSalute teams) OR  `npm run prod` (for partner teams)
-- Open http://127.0.0.1:4000 in your browser (do not use http://localhost:4000 - it is not whitelisted with the IDP)
+- Open http://localhost:4000 in your browser
 
 You will need a valid WeSalute account to log in. Ask for a test one if it was not provided to you.
 
