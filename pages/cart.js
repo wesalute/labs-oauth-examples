@@ -34,8 +34,8 @@ function Cart() {
           setUserLoaded(true); // Set userLoaded to true to prevent infinite loop
           setUserInfo(data); // Set userInfo to the response data
           console.log("userInfo:", data);
-        } catch (error) {
-          console.error('Error fetching user info:', error);
+        } catch (e) {
+          console.error('Error fetching user info:', e);
         }
       }
 

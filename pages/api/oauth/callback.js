@@ -9,16 +9,19 @@ export default async function handler(req, res) {
   const basePath = publicRuntimeConfig.basePath;
   const destination = basePath ? `${publicRuntimeConfig.basePath}/${req.query.client_id}` : `/${req.query.client_id}`;
 
+  console.log("Callback request received with query:", req.query);
+
+  // Check for the code or error in the query string
+  if (!req.query.code) {
+    return res.redirect(302, destination);
+  }
+
+  // Step 2: Exchange Code for Access Token
   try {
-    if (!req.query.code) {
-      return res.redirect(302, destination);
-    }
     token = await getAccessToken(req.headers.host, req.query.code, req.query.client_id);
   }
   catch (e) {
     console.log(e);
-  }
-  if (!token) {
     return res.status(500).send("An error occurred");
   }
 
